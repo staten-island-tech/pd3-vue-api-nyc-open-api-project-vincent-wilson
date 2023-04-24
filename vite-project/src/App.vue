@@ -1,9 +1,10 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
+import arraychart from "./components/arraychart.vue";
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <arraychart />
 </template>
 
 <style scoped></style>
