@@ -26,10 +26,14 @@ onMounted(getdata());
       v-for="data in dataset"
       :key="data.eventid"
       :id="data.eventid"
-      :category="data.category"
-      :event="data.eventtype"
+      :category="data.eventtype"
+      :event="data.subcategoryname"
     />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  font-size: 10px;
+}
+</style>
