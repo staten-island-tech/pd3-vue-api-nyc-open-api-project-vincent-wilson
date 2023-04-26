@@ -7,7 +7,7 @@ const dataset = ref([]);
 async function getdata() {
   try {
     const response = await fetch(
-      "https://data.cityofnewyork.us/resource/jb7j-dtam.json"
+      "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
     );
     const data = await response.json();
     dataset.value = data;
@@ -17,17 +17,17 @@ async function getdata() {
   }
 }
 
-onMounted(getdata);
+onMounted(getdata());
 </script>
 
 <template>
   <div class="container">
     <personcard
-      v-for="(data, index) in dataset"
-      :key="index"
-      :year="data.year"
-      :cause="data.leading_cause"
-      :sex="data.sex"
+      v-for="data in dataset"
+      :key="data.eventid"
+      :id="data.eventid"
+      :category="data.category"
+      :event="data.eventtype"
     />
   </div>
 </template>
