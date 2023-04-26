@@ -1,15 +1,18 @@
 <template>
   <div class="card">
-    <h2>holy hell {{ deaths.name }}</h2>
+    <h1>{{ year }} {{ cause }} {{ sex }}</h1>
   </div>
 </template>
 
-<script setup>
-const prop = defineProps({
-  age: Object,
-  year: Number,
-  cause: Object,
-});
+<script>
+export default {
+  props: {
+    sex: Object,
+    race: Object,
+    year: Number,
+    cause: Object,
+  },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

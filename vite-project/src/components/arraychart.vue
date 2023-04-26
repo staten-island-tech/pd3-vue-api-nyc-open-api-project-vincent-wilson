@@ -1,29 +1,33 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import personcard from "../components/personcard.vue";
-const deaths = ref("");
+
+const dataset = ref([]);
+
 async function getdata() {
   try {
-    let response = await fetch(
+    const response = await fetch(
       "https://data.cityofnewyork.us/resource/jb7j-dtam.json"
     );
-    let data = response.json;
-    deaths.value = data.results;
+    const data = await response.json();
+    dataset.value = data;
     console.log(data);
   } catch (error) {
     console.log(error);
   }
 }
-onMounted(() => getdata());
+
+onMounted(getdata);
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <personcard
-      v-for="(rate, year, cause) in deaths"
-      :key="rate.age_adjusted_death_rate"
-      :year="year.year"
-      :cause="cause.leading_cause"
+      v-for="(data, index) in dataset"
+      :key="index"
+      :year="data.year"
+      :cause="data.leading_cause"
+      :sex="data.sex"
     />
   </div>
 </template>
