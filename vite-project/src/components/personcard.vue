@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <h1>{{ id }} {{ category }} {{ event }}</h1>
+    <h1>eventid: {{ id }}, permit: {{ category }} type:{{ event }}</h1>
   </div>
 </template>
 
@@ -14,4 +14,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+  background-color: beige;
+  text-align: center;
+  margin-left: 45rem;
+  margin-right: 45rem;
+}
+</style>
