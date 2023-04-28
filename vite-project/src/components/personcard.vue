@@ -1,6 +1,7 @@
 <template>
   <div class="card">
-    <h1>eventid: {{ id }}, permit: {{ category }} type:{{ event }}</h1>
+    <h2>id: {{ id }}</h2>
+    <h3>category:{{ category }}, type:{{ event }}</h3>
   </div>
 </template>
 

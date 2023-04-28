@@ -19,21 +19,30 @@ async function getdata() {
 
 onMounted(getdata());
 </script>
-
+wilson, make buttons that access graphs that display specific parts like a
+piechart that compares the amount of comercial to televison or a bar graph of
+how many are in each borough
 <template>
-  <div class="container">
-    <personcard
-      v-for="data in dataset"
-      :key="data.eventid"
-      :id="data.eventid"
-      :category="data.eventtype"
-      :event="data.subcategoryname"
-    />
+  <div class="thing">
+    <h1>film permit data</h1>
+    <div class="container">
+      <personcard
+        v-for="data in dataset"
+        :key="data.eventid"
+        :id="data.eventid"
+        :category="data.category"
+        :event="data.subcategoryname"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .container {
-  font-size: 10px;
+  font-size: 15px;
+}
+.thing {
+  font-size: 35px;
+  text-align: center;
 }
 </style>
