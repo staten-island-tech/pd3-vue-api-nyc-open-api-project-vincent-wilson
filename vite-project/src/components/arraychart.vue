@@ -1,7 +1,15 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import personcard from "../components/personcard.vue";
+export default {
+  computed: {
+  filter() {
+    if(this.dataset.category === "television"){
 
+    }
+  }
+}
+}
 const dataset = ref([]);
 
 async function getdata() {
