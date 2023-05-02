@@ -7,7 +7,9 @@ const dataset = ref([]);
 
 async function getdata() {
   try {
-    const response = await fetch("/api/userlist");
+    const response = await fetch(
+      "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
+    );
     const data = await response.json();
     dataset.value = data;
     console.log(data);
@@ -34,7 +36,7 @@ how many are in each borough
       />
     </div>
   </div>
-  <BarChart v-if="loaded" :data="chartData" />
+  <Bar v-if="loaded" :data="chartData" />
 </template>
 
 <style scoped>

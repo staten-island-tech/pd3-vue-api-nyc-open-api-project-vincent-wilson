@@ -13,6 +13,7 @@ import {
   CategoryScale,
   LinearScale,
 } from "chart.js";
+import { onMounted } from "vue";
 
 ChartJS.register(
   Title,
@@ -34,8 +35,10 @@ export default {
     this.loaded = false;
 
     try {
-      const { userlist } = await fetch("/api/userlist");
-      this.chartdata = userlist;
+      const { api } = await fetch(
+        "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
+      );
+      this.chartdata = api;
 
       this.loaded = true;
     } catch (e) {
@@ -43,6 +46,8 @@ export default {
     }
   },
 };
+
+onMounted(data());
 </script>
 
 <style scoped></style>
