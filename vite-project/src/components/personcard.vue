@@ -1,6 +1,8 @@
 <template>
-  <div class="card">
-    <h1>{{ id }} {{ category }} {{ event }}</h1>
+  <div>
+    <div class="card">
+      <h1>{{ id }} {{ category }} {{ event }}</h1>
+    </div>
   </div>
 </template>
 
