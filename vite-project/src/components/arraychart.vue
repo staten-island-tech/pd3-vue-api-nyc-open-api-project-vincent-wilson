@@ -16,7 +16,7 @@ async function getdata() {
   }
 }
 
-onMounted(data());
+onMounted(getdata());
 </script>
 wilson, make buttons that access graphs that display specific parts like a
 piechart that compares the amount of comercial to televison or a bar graph of
@@ -34,7 +34,7 @@ how many are in each borough
       />
     </div>
   </div>
-  <Bar v-if="loaded" :data="chartData" />
+  <BarChart v-if="loaded" :data="chartData" />
 </template>
 
 <style scoped>
