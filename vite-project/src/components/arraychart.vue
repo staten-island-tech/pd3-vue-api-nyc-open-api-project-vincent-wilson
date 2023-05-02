@@ -1,14 +1,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import personcard from "../components/personcard.vue";
+import BarChart from "../components/barchart.vue";
 
 const dataset = ref([]);
 
 async function getdata() {
   try {
-    const response = await fetch(
-      "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
-    );
+    const response = await fetch("/api/userlist");
     const data = await response.json();
     dataset.value = data;
     console.log(data);
@@ -17,7 +16,7 @@ async function getdata() {
   }
 }
 
-onMounted(getdata());
+onMounted(data());
 </script>
 wilson, make buttons that access graphs that display specific parts like a
 piechart that compares the amount of comercial to televison or a bar graph of
@@ -35,6 +34,7 @@ how many are in each borough
       />
     </div>
   </div>
+  <Bar v-if="loaded" :data="chartData" />
 </template>
 
 <style scoped>
