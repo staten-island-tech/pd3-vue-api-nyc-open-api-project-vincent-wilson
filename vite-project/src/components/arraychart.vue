@@ -3,39 +3,28 @@ import personcard from "../components/personcard.vue";
 </script>
 <script>
 export default {
-  methods: {
-    getdata() {
-      fetch("https://data.cityofnewyork.us/resource/tg4x-b46p.json")
-        .then((response) => response.json())
-        .then((res) => {
-          if (this.search) {
-            this.dataset = res.results.filter((dataset) =>
-              dataset.category.toLowerCase().includes(this.search.toLowerCase())
-            );
-          } else {
-            this.people = res.results;
-          }
-        });
-    },
-  },
-  computed: {
-    filteredcate() {
-      if (this.dataset) {
-        this.dataset.filter((dataset) => {
-          return dataset.category
-            .toLowerCase()
-            .includes(this.search.toLowerCase());
-        });
-      }
-      return false;
-    },
-  },
   data() {
     return {
       search: "",
       dataset: [],
     };
   },
+  methods: {
+    getdata() {
+      const response = fetch(
+        "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
+      );
+      this.dataset = response.json;
+    },
+    filteredcate() {
+      if (this.search.toLowerCase() === this.dataset.category.toLowerCase()) {
+        this.dataset = dataset.filter((dataset) =>
+          dataset.category.toLowerCase().includes(this.search.toLowerCase())
+        );
+      }
+    },
+  },
+
   created() {
     this.getdata();
   },
@@ -51,6 +40,7 @@ export default {
       v-model="search"
       @keyup="getdata()"
     />
+    <button @click="filteredcate()"></button>
     <div class="container">
       <li v-for="data in dataset" :key="data.eventid">
         id:{{ data.eventid }} category:{{ data.category }} type:{{
