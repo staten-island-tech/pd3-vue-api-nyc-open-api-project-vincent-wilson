@@ -1,34 +1,12 @@
 <script setup>
 import personcard from "../components/personcard.vue";
-</script>
-<script>
-export default {
-  data() {
-    return {
-      search: "",
-      dataset: [],
-    };
-  },
-  methods: {
-    getdata() {
-      const response = fetch(
-        "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
-      );
-      this.dataset = response.json;
-    },
-    filteredcate() {
-      if (this.search.toLowerCase() === this.dataset.category.toLowerCase()) {
-        this.dataset = dataset.filter((dataset) =>
-          dataset.category.toLowerCase().includes(this.search.toLowerCase())
-        );
-      }
-    },
-  },
 
-  created() {
-    this.getdata();
-  },
-};
+const response = await fetch(
+  "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
+);
+const data = await response.json();
+dataset.value = data;
+console.log(data);
 </script>
 
 <template>
@@ -47,7 +25,6 @@ export default {
           data.subcategoryname
         }}
       </li>
-      <li />
     </div>
   </div>
 </template>
