@@ -29,16 +29,19 @@ export default {
   components: { Bar },
   data: () => ({
     loaded: false,
-    chartData: null,
+    chartData: {
+      labels: ["January", "February", "March"],
+      datasets: [null],
+    },
   }),
   async mounted() {
     this.loaded = false;
 
     try {
-      const { api } = await fetch(
+      const { x } = await fetch(
         "https://data.cityofnewyork.us/resource/tg4x-b46p.json"
       );
-      this.chartdata = api;
+      this.chartdata.datasets = x;
 
       this.loaded = true;
     } catch (e) {
