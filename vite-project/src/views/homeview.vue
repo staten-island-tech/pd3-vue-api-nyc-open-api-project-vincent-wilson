@@ -29,6 +29,11 @@ function filterDatac() {
     return data.category.toLowerCase() === "commercial";
   });
 }
+function filterDataother() {
+  filteredDataset.value = dataset.value.filter((data) => {
+    return data.category.toLowerCase() === "theater";
+  });
+}
 onMounted(getData);
 </script>
 
@@ -36,8 +41,12 @@ onMounted(getData);
   <div>
     <h1 class="thing">List</h1>
     <div>
-      <button @click="filterDatat()">Filter to tele</button>
-      <button @click="filterDatac()">Filter to com</button>
+      <button @click="filterDatat()" class="clicker">Filter to tele</button>
+      <button @click="filterDatac()" class="clicker">Filter to com</button>
+      <button @click="filterDataother()" class="clicker">
+        Filter to theater
+      </button>
+      <router-link to="/graph" class="clicker router">go to graphs</router-link>
     </div>
     <div class="container">
       <personcard
@@ -59,5 +68,15 @@ onMounted(getData);
 .thing {
   font-size: 35px;
   text-align: center;
+}
+.clicker {
+  padding: 15px;
+  background-color: blanchedalmond;
+  border: none;
+  margin: 2px;
+}
+.router {
+  float: right;
+  margin-right: 30px;
 }
 </style>

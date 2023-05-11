@@ -1,7 +1,50 @@
 <template>
-  <div>bob</div>
+  <div>
+    <h1>This is a chart</h1>
+    <Bar v-if="loaded" :data="chartData" />
+  </div>
 </template>
 
-<script setup></script>
+<script>
+import { Bar } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
-<style lang="scss" scoped></style>
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
+export default {
+  name: "BarChart",
+  components: { Bar },
+  data: () => ({
+    loaded: false,
+    chartData: null,
+  }),
+  async mounted() {
+    this.loaded = false;
+
+    try {
+      const { userlist } = await fetch(
+        "data.cityofnewyork.us/resource/tg4x-b46p.json"
+      );
+      this.chartdata = userlist;
+
+      this.loaded = true;
+    } catch (e) {
+      console.error(e);
+    }
+  },
+};
+</script>
