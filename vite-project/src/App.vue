@@ -1,9 +1,7 @@
-<script setup>
-import arraychart from "./components/arraychart.vue";
-</script>
+<script setup></script>
 
 <template>
-  <arraychart />
+  <RouterView />
 </template>
 
 <style scoped></style>
