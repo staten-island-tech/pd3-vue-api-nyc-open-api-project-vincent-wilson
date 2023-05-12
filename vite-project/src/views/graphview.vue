@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>This is a chart</h1>
+  <div class="container">
+    <button @click="fetchstuff()"></button>
+    <router-link to="/" class="clicker router">go back</router-link>
     <Bar v-if="loaded" :data="chartData" />
   </div>
 </template>
@@ -25,26 +26,21 @@ ChartJS.register(
   CategoryScale,
   LinearScale
 );
+
 export default {
   name: "BarChart",
   components: { Bar },
-  data: () => ({
-    loaded: false,
-    chartData: null,
-  }),
-  async mounted() {
-    this.loaded = false;
-
-    try {
-      const { userlist } = await fetch(
-        "data.cityofnewyork.us/resource/tg4x-b46p.json"
-      );
-      this.chartdata = userlist;
-
-      this.loaded = true;
-    } catch (e) {
-      console.error(e);
-    }
+  data() {
+    return {
+      loaded: false,
+      chartData: [],
+    };
   },
+  mounted() {
+    this.loaded = false;
+    
+  },
+  
 };
+
 </script>
