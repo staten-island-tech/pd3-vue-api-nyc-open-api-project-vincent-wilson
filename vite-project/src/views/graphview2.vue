@@ -1,39 +1,26 @@
 <template>
   <div class="container">
     <router-link to="/" class="router">go back</router-link>
-    <router-link to="/graph2" class="router">go to next graph</router-link>
-    <Bar v-if="loaded" :data="chartData" />
+    <Pie v-if="loaded" :data="chartData" />
   </div>
 </template>
 
 <script>
-import { Bar } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
+import { Pie } from "vue-chartjs";
+import Chart from "chart.js/auto";
+import { Title, Tooltip, Legend, CategoryScale, LinearScale } from "chart.js";
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+Chart.register(Title, Tooltip, Legend, CategoryScale, LinearScale);
 
 export default {
-  name: "BarChart",
-  components: { Bar },
-  data: () => ({
-    loaded: false,
-    chartData: null,
-  }),
+  name: "PieChart",
+  components: { Pie },
+  data() {
+    return {
+      loaded: false,
+      chartData: null,
+    };
+  },
   async mounted() {
     this.loaded = false;
 
@@ -61,7 +48,17 @@ export default {
         datasets: [
           {
             label: "Category Counts",
-            backgroundColor: "rgba(173, 173, 173)",
+            backgroundColor: [
+              "rgba(75, 192, 192)",
+              "rgba(255, 99, 132)",
+              "rgba(123, 142, 235)",
+              "rgba(54, 162, 23)",
+              "rgba(541, 162, 235)",
+              "rgba(154, 62, 115)",
+              "rgba(54, 12, 23)",
+              "rgba(54, 832, 351)",
+              "rgba(174, 162, 115)",
+            ],
             data: categoryCounts.map((entry) => entry.count),
           },
         ],
@@ -74,7 +71,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .router {
   padding: 15px;
