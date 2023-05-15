@@ -1,12 +1,7 @@
-<script setup>
-import arraychart from "./components/arraychart.vue";
-</script>
+<script setup></script>
 
 <template>
-  <arraychart />
-  <nav>
-    <RouterLink to="/graph">graph</RouterLink>
-  </nav>
+  <RouterView />
 </template>
 
 <style scoped></style>
