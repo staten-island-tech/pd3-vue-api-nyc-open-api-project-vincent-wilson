@@ -1,10 +1,7 @@
 <script setup></script>
 
 <template>
-  <arraychart />
-  <nav>
-    <RouterLink to="/graph">graph</RouterLink>
-  </nav>
+  <RouterView />
 </template>
 
 <style scoped></style>
