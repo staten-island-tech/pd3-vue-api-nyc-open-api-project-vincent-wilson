@@ -1,25 +1,32 @@
 <template>
-  <div class="card">
-    <h2>id: {{ id }}</h2>
-    <h3>category:{{ category }}, type:{{ event }}</h3>
+  <div class="person-card">
+    <h2>{{ id }}</h2>
+    <p class="info">{{ category }}</p>
+    <p class="info">{{ event }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    category: Object,
     event: Object,
     id: Number,
-    category: Object,
   },
 };
 </script>
 
 <style scoped>
-.card {
-  background-color: beige;
+.person-card {
+  display: inline-block;
   text-align: center;
-  margin-left: 45rem;
-  margin-right: 45rem;
+  font-size: 16px;
+  background-color: antiquewhite;
+  padding: 5px;
+  margin: 5px;
+}
+
+.info {
+  margin: 5px 0;
 }
 </style>
